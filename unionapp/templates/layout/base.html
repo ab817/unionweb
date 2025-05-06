@@ -68,14 +68,13 @@
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a  href="#main-banner" class="{% block home_active %}{% endblock %}">Home</a></li>
+                        <li><a  href="{% url 'home' %}" class="{% block home_active %}{% endblock %}">Home</a></li>
                         <li><a  href="#about">About Us</a></li>
                         <li><a  href="#issues">Issues</a></li>
                         <li><a  href="#event">Event</a></li>
 						<li><a  href="#gallery">Gallery</a></li>
                         <li><a  href="#media">Multimedia</a></li>
-						<li><a  href="#blog">Blog</a></li>
-                        <li><a  href="{% url 'blog' %}" class="{% block blog_active %}{% endblock %}">blog2</a></li>
+						<li><a  href="{% url 'blog' %}" class="{% block blog_active %}{% endblock %}">Blog</a></li>
                         <li><a  href="#contact">Contact</a></li>
                     </ul>
                 </div>
