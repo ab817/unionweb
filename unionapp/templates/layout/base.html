@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
  
      <!-- Site Metas -->
-    <title>ELPolitic - Responsive HTML5 OnePage Template</title>  
+    <title>कृषि बिकास बैंक कर्मचारी संघ</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -51,7 +51,7 @@
     <!-- END LOADER -->
 
     <div class="topbar text-center hidden-xs">
-        <p>महत्वपुर्ण सुचना र सोसियल लिन्क्स - <span>महाराष्ट्र विधान सभा</span></p>
+        <p>बिशुद्ध पेशागत हकहितका लागि कर्मचारी एकता , <span>पारदर्शी र गतिशिल ब्यवस्थापन आजकाे आवस्यकता !!</span></p>
     </div>
 
     <header class="header header_style_01">
@@ -64,18 +64,17 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#"><img src="{% static 'images/logos/logo.png' %}" alt="image"></a>
+                    <a class="navbar-brand" href="#"><img src="{% static 'images/logos/logo_union.png' %}" alt="image"></a>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a  href="{% url 'home' %}" class="{% block home_active %}{% endblock %}">Home</a></li>
-                        <li><a  href="#about">About Us</a></li>
-                        <li><a  href="#issues">Issues</a></li>
-                        <li><a  href="#event">Event</a></li>
-						<li><a  href="#gallery">Gallery</a></li>
-                        <li><a  href="#media">Multimedia</a></li>
-						<li><a  href="{% url 'blog' %}" class="{% block blog_active %}{% endblock %}">Blog</a></li>
-                        <li><a  href="#contact">Contact</a></li>
+                        <li><a  href="{% url 'home' %}" class="{% block home_active %}{% endblock %}">होमपेज</a></li>
+                        <li><a  href="#about">नेतृत्व</a></li>
+                        <li><a  href="#issues">इतिहास</a></li>
+                        <li><a  href="#event">नीति तथा कार्यक्रम</a></li>
+						<li><a  href="#gallery">फोटोहरु</a></li>
+                        <!--<li><a  href="{% url 'blog' %}" class="{% block blog_active %}{% endblock %}">Blog</a></li>-->
+                        <li><a  href="#contact">सम्पर्क</a></li>
                     </ul>
                 </div>
             </div>
@@ -143,22 +142,24 @@
             <div class="footer-distributed">
                 <div class="footer-left">
                     <p class="footer-links">
-                        <a href="#">Home</a>
-                        <a href="#">Blog</a>
-                        <a href="#">Pricing</a>
-                        <a href="#">About</a>
-                        <a href="#">Faq</a>
-                        <a href="#">Contact</a>
+                        <a href="{% url 'home' %}">होमपेज</a>
+                        <a href="#">नेतृत्व</a>
+                        <a href="#">इतिहास</a>
+                        <a href="#">नीति तथा कार्यक्रम</a>
+                        <a href="#">फोटोहरु</a>
+                        <a href="#">सम्पर्क</a>
                     </p>
-                    <p class="footer-company-name">All Rights Reserved. © 2018 <a href="#">Elpolitic</a> Design By : 
-					<a href="https://html.design/">html design</a></p>
+                    <p class="footer-company-name">All Rights Reserved. © 2025 <a href="#">कृषि बिकास बैंक कर्मचारी संघ</a> </p>
                 </div>
 
                 <div class="footer-right">
-                    <form method="get" action="#">
-                        <input placeholder="Subscribe our newsletter.." name="search">
-                        <i class="fa fa-envelope-o"></i>
-                    </form>
+                    <ul class="nav navbar-nav" style="margin: 0; padding: 0;">
+                    <li>
+                    <a href="{% static 'calendar.pdf' %}" class="btn btn-default btn-sm" target="_blank" style="margin-left: 10px;">
+                Calendar - 2082
+                    </a>
+                    </li>
+                    </ul>
                 </div>
             </div>
         </div><!-- end container -->
