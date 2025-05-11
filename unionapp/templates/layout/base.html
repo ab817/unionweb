@@ -64,7 +64,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#"><img src="{% static 'images/logos/logo_union.png' %}" alt="image"></a>
+                    <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'images/logos/logo_union.png' %}" alt="image"></a>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
@@ -73,7 +73,7 @@
                         <li><a  href="#issues">इतिहास</a></li>
                         <li><a  href="#event">नीति तथा कार्यक्रम</a></li>
 						<li><a  href="#gallery">फोटोहरु</a></li>
-                        <!--<li><a  href="{% url 'blog' %}" class="{% block blog_active %}{% endblock %}">Blog</a></li>-->
+                        <li><a  href="{% url 'blog_list' %}" class="{% block blog_active %}{% endblock %}">Blog</a></li>
                         <li><a  href="#contact">सम्पर्क</a></li>
                     </ul>
                 </div>
@@ -84,53 +84,67 @@
     <div id="donate" data-scroll-index="7" class="section db">
         <div class="container">
             <div class="section-title text-center">
-                <h3>Contact</h3>
-                <p class="lead">Quisque eget nisl id nulla sagittis auctor quis id. Aliquam quis vehicula enim, non aliquam risus.<br> Sed a tellus quis mi rhoncus dignissim.</p>
+                <h3>Contact Us</h3>
+                <p class="lead">Your support helps us continue our important work. Please fill out the form below.</p>
             </div><!-- end title -->
-
+    
             <div class="row">
-                <div class="col-md-12">
-                    <div class="contact_form">
-                        <div id="message"></div>
-                        <form id="contactform" class="row" action="{% url 'contact' %}" name="contactform" method="post">
-                            <fieldset class="row-fluid">
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                    <input type="text" name="first_name" id="first_name" class="form-control" placeholder="First Name">
+                <div class="col-md-6">
+                    <div class="donate-form-wrapper">
+                        <form class="donate-form" method="post" action="{% url 'contact' %}">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="first_name" placeholder="First Name" required>
+                                    </div>
                                 </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                    <input type="text" name="last_name" id="last_name" class="form-control" placeholder="Last Name">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="last_name" placeholder="Last Name" required>
+                                    </div>
                                 </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                    <input type="email" name="email" id="email" class="form-control" placeholder="Your Email">
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="email" class="form-control" name="email_id" placeholder="Email Address" required>
+                                    </div>
                                 </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                    <input type="text" name="phone" id="phone" class="form-control" placeholder="Your Phone">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="tel" class="form-control" name="mobile_number" placeholder="Phone Number" required>
+                                    </div>
                                 </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                    <label class="sr-only">Select Service</label>
-                                    <select name="select_service" id="select_service" class="selectpicker form-control" data-style="btn-white">
-                                        <option value="12">Donate For?</option>
-                                        <option value="Political Parties">Political Parties</option>
-                                        <option value="For Politician">For Politician</option>
-                                        <option value="Others">Others</option>
-                                    </select>
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                    <label class="sr-only">What is max price?</label>
-                                    <select name="select_price" id="select_price" class="selectpicker form-control" data-style="btn-white">
-                                        <option value="$100 - $2000">$10 - $100</option>
-                                        <option value="$2000 - $4000">$100 - $1000</option>
-                                        <option value="$4000 - $10000">$1000 - $10000</option>
-                                    </select>
-                                </div>
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <textarea class="form-control" name="comments" id="comments" rows="6" placeholder="Why you are donate us?"></textarea>
-                                </div>
-                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 text-center">
-                                    <button type="submit" value="SEND" id="submit" class="btn btn-light btn-radius btn-brd grd1 btn-block">Pay Now via PayPal</button>
-                                </div>
-                            </fieldset>
+                            </div>
+                            
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="message_subject" placeholder="Message Subject" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <textarea class="form-control" name="feedback" rows="5" placeholder="Additional Message (Optional)"></textarea>
+                            </div>
+                            
+                            <div class="form-group text-center">
+                                <button type="submit" class="btn btn-light btn-radius btn-brd grd1">Submit</button>
+                            </div>
                         </form>
+                    </div>
+                </div><!-- end col -->
+                
+                <div class="col-md-6">
+                    <div class="donate-info">
+                        <h4>Why Donate?</h4>
+                        <p>Your generous donation helps us continue our mission and make a difference in our community.</p>
+                        
+                        <h4>Other Ways to Donate</h4>
+                        <ul class="donate-list">
+                            <li><i class="fa fa-bank"></i> Bank Transfer: <strong>Account Name, Account Number, Bank Name</strong></li>
+                            <li><i class="fa fa-mobile"></i> Mobile Payment: <strong>9841XXXXXX (eSewa/Khalti)</strong></li>
+                            <li><i class="fa fa-envelope"></i> Check: <strong>Payable to Organization Name</strong></li>
+                        </ul>
                     </div>
                 </div><!-- end col -->
             </div><!-- end row -->
@@ -149,7 +163,7 @@
                         <a href="#">फोटोहरु</a>
                         <a href="#">सम्पर्क</a>
                     </p>
-                    <p class="footer-company-name">All Rights Reserved. © 2025 <a href="#">कृषि बिकास बैंक कर्मचारी संघ</a> </p>
+                    <p class="footer-company-name">All Rights Reserved. © 2025 <a href="#">कृषि बिकास बैंक कर्मचारी संघ, नेपाल</a> </p>
                 </div>
 
                 <div class="footer-right">

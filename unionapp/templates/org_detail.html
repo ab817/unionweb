@@ -1,0 +1,73 @@
+{% extends "layout/base.html" %}
+{% load static %}
+{% block blog_active %}active{% endblock %}
+
+
+{% block bodysection %}
+<div class="container" style="margin-top: 100px; margin-bottom: 50px;">
+    <div class="section-title text-center">
+        <h1>{{ org.title }}</h1>
+        <p class="lead">{{ org.slogan }}</p>
+    </div>
+
+    <!-- Main Content -->
+    <div class="row">
+        <div class="col-md-8">
+            <!-- Featured Image -->
+            <div class="post-media wow fadeIn">
+                <img src="{{ org.image.url }}" alt="" class="img-responsive img-rounded">
+                {% if org.video_link %}
+                <a href="{{ org.video_link }}" data-rel="prettyPhoto[gal]" class="playbutton"><i class="flaticon-play-button"></i></a>
+                {% endif %}
+            </div>
+
+            <!-- Description -->
+            <div class="org-description">
+                {{ org.description|safe }}
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <!-- Sidebar Info -->
+            <div class="org-sidebar">
+                <div class="sidebar-widget">
+                    <h4>Quick Info</h4>
+                    <ul class="list-group">
+                        {% if org.created_at %}
+                        <li class="list-group-item">
+                            <i class="fa fa-calendar"></i> 
+                            <strong>Established:</strong> 
+                            {{ org.created_at|date:"F Y" }}
+                        </li>
+                        {% endif %}
+                        <!-- Add more fields as needed -->
+                    </ul>
+                </div>
+
+                <!-- Related Content -->
+                {% if related_content %}
+                <div class="sidebar-widget">
+                    <h4>Related Content</h4>
+                    {% for item in related_content %}
+                    <div class="related-item">
+                        <a href="{% url 'org_detail' item.id %}">
+                            <img src="{{ item.image.url }}" alt="{{ item.title }}" class="img-responsive">
+                            <h5>{{ item.title }}</h5>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Back Button -->
+    <div class="text-center mt-4">
+        <a href="{% url 'home' %}" class="btn btn-light btn-radius btn-brd grd1">
+            <i class="fa fa-arrow-left"></i> Back to Home
+        </a>
+    </div>
+</div>
+{% endblock %}
+

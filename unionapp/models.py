@@ -29,13 +29,13 @@ class WelcomeContent(models.Model):
 
 # Event Model
 class Event(models.Model):
-    STATUS_CHOICES = [
-        ('true', 'True'),
-        ('false', 'False'),
-    ]
     EVENT_CHOICES = [
-        ('online', 'Online'),
-        ('offline', 'Offline'),
+        ('Member Events', 'Member Events'),
+        ('Employee Engagement', 'Employee Engagement'),
+        ('Professional Development', 'Professional Development'),
+        ('Industry-Specific', 'Industry-Specific'),
+        ('Techonology', 'Techonology'),
+        ('Awareness', 'Awareness'),
     ]
     title = models.CharField(max_length=255)
     description = RichTextField()
@@ -44,7 +44,7 @@ class Event(models.Model):
     start_datetime = models.DateTimeField()
     end_datetime = models.DateTimeField()
     location = models.CharField(max_length=255)
-    is_virtual = models.BooleanField(choices=STATUS_CHOICES, default='false')
+    is_virtual = models.BooleanField(default=False)
     video_link = models.URLField(blank=True, null=True)
     document_link = models.FileField(upload_to='event_documnents/', blank=True, null=True)
     registration_link = models.URLField(blank=True, null=True)
@@ -109,7 +109,6 @@ class Contact(models.Model):
 # Gallery Post Model
 class GalleryPost(models.Model):
     CATEGORY_CHOICES = [
-        ('all', 'All'),
         ('meeting', 'Meeting'),
         ('event', 'Event'),
         ('economic', 'Economic'),
@@ -127,3 +126,30 @@ class GalleryImage(models.Model):
     image_title = models.CharField(max_length=255)
     image = models.ImageField(upload_to='gallery_images/')
     uploaded_at = models.DateTimeField(auto_now_add=True)
+
+class VideoPost(models.Model):
+    title = models.CharField(max_length=255)
+    description = models.TextField(blank=True, null=True)
+    image = models.ImageField(upload_to='mutimedia_images/')
+    video_link = models.URLField(blank=True, null=True)
+    position = models.PositiveIntegerField()
+    is_active = models.BooleanField(default=True)
+
+class IssuePlan(models.Model):
+    ISSUE_TYPE_CHOICES = [
+        ('climate', 'Climate Change'),
+        ('immigration', 'Comprehensive Immigration Reform'),
+        ('economic', 'Economic Opportunity'),
+        ('health', 'Health Care'),
+    ]
+    
+    title = models.CharField(max_length=255)
+    description = RichTextField()
+    image = models.ImageField(upload_to='issues/')
+    issue_type = models.CharField(max_length=50, choices=ISSUE_TYPE_CHOICES)
+    is_featured = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.title
