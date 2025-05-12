@@ -5,7 +5,7 @@
 
 {% block bodysection %}
 <div class="container" style="margin-top: 100px; margin-bottom: 50px;">
-    <div class="section-title text-center">
+    <div class="section-title">
         <h1>{{ org.title }}</h1>
         <p class="lead">{{ org.slogan }}</p>
     </div>
@@ -22,7 +22,7 @@
             </div>
 
             <!-- Description -->
-            <div class="org-description">
+            <div class="org-description mx-auto text-center">
                 {{ org.description|safe }}
             </div>
         </div>
@@ -31,7 +31,7 @@
             <!-- Sidebar Info -->
             <div class="org-sidebar">
                 <div class="sidebar-widget">
-                    <h4>Quick Info</h4>
+                    <h2><b>Quick Info</b></h4>
                     <ul class="list-group">
                         {% if org.created_at %}
                         <li class="list-group-item">
@@ -47,11 +47,11 @@
                 <!-- Related Content -->
                 {% if related_content %}
                 <div class="sidebar-widget">
-                    <h4>Related Content</h4>
+                    <h2><b>Related Content</b></h2>
                     {% for item in related_content %}
                     <div class="related-item">
                         <a href="{% url 'org_detail' item.id %}">
-                            <img src="{{ item.image.url }}" alt="{{ item.title }}" class="img-responsive">
+                            <img src="{{ item.image.url }}" alt="{{ item.title }}" class="img-responsive img-rounded">
                             <h5>{{ item.title }}</h5>
                         </a>
                     </div>

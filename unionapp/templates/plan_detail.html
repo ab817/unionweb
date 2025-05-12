@@ -1,0 +1,24 @@
+{% extends "layout/base.html" %}
+{% load static %}
+{% block blog_active %}active{% endblock %}
+
+{% block bodysection %}
+<div class="container" style="margin-top: 100px; margin-bottom: 50px;">
+    <div class="event-detail text-center">
+        <h1>{{ plan.title }}</h1>
+        <div class="meta mb-3">
+            <span><i class="fa fa-calendar"></i> {{ plan.created_at|date:"F d, Y" }}</span>
+        </div>
+        
+        <img src="{{ plan.image.url }}" class="img-fluid mb-4 img-rounded" style="max-width: 600px;" alt="{{ plan.title }}">
+        
+        <div class="content mx-auto text-center">
+            {{ plan.description|safe }}
+        </div>
+
+        <div class="mt-4">
+            <a href="{% url 'home' %}#plans" class="btn btn-light btn-radius btn-brd grd1">Back to Plans</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

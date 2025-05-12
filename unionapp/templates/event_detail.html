@@ -5,15 +5,15 @@
 
 {% block bodysection %}
 <div class="container" style="margin-top: 100px; margin-bottom: 50px;">
-    <div class="event-detail">
+    <div class="event-detail text-center">
         <h1>{{ event.title }}</h1>
         <div class="meta">
             <span><i class="fa fa-calendar"></i> {{ event.start_datetime|date:"F d, Y" }}</span>
             <span><i class="fa fa-clock-o"></i> {{ event.start_datetime|time }} - {{ event.end_datetime|time }}</span>
             <span><i class="fa fa-map-marker"></i> {{ event.location }}</span>
         </div>
-        <img src="{{ event.image.url }}" class="img-responsive" alt="{{ event.title }}">
-        <div class="content">
+        <img src="{{ event.image.url }}" class="img-responsive img-rounded" alt="{{ event.title }}">
+        <div class="content mx-auto text-center">
             {{ event.description|safe }}
         </div>
         {% if event.registration_link %}

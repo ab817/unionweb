@@ -21,9 +21,23 @@ def home(request):
     }
     return render(request, 'homepage.html', context)
 
+def plan_detail(request, id):
+    plan = get_object_or_404(IssuePlan, id=id)
+    related_plans = IssuePlan.objects.filter(issue_type=plan.issue_type).exclude(id=plan.id)[:5]
+    return render(request, 'plan_detail.html', {
+        'plan': plan,
+        'related_plans': related_plans
+    })
 def blog_detail(request, id):
-    blog = BlogPost.objects.get(id=id)
-    return render(request, 'blog_detail.html', {'blog': blog})
+    blog = get_object_or_404(BlogPost, id=id, status='published')
+
+    # Fetch latest published blogs, excluding the current one
+    latest_blogs = BlogPost.objects.filter(status='published').exclude(id=blog.id).order_by('-created_at')[:4]
+
+    return render(request, 'blog_detail.html', {
+        'blog': blog,
+        'latest_blogs': latest_blogs
+    })
 
 def event_detail(request, id):
     event = Event.objects.get(id=id)
@@ -62,6 +76,18 @@ def blog_list(request):
         'blog_posts': page_obj,
         'page_obj': page_obj,
         'is_paginated': paginator.num_pages > 1
+    })
+
+def video_list(request):
+    videos = VideoPost.objects.filter(is_active=True).order_by('position')
+    paginator = Paginator(videos, 9)  # 6 per page (3 per row * 2 rows)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    return render(request, 'video_list.html', {
+        'video_posts': page_obj,
+        'is_paginated': page_obj.has_other_pages(),
+        'page_obj': page_obj
     })
 def leadership(request):
     return render(request, 'leadership.html')

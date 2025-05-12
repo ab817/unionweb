@@ -16,7 +16,7 @@
     <meta name="author" content="">
 
     <!-- Site Icons -->
-    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon" />
+    <link rel="shortcut icon" href="{% static 'images/adbl.ico' %}" type="image/x-icon" />
     <link rel="apple-touch-icon" href="{% static 'images/apple-touch-icon.png' %}">
 
     <!-- Bootstrap CSS -->
@@ -73,6 +73,7 @@
                         <li><a  href="#issues">इतिहास</a></li>
                         <li><a  href="#event">नीति तथा कार्यक्रम</a></li>
 						<li><a  href="#gallery">फोटोहरु</a></li>
+                        <li><a  href="{% url 'video_list' %}" class="{% block video_list %}{% endblock %}">Video</a></li>
                         <li><a  href="{% url 'blog_list' %}" class="{% block blog_active %}{% endblock %}">Blog</a></li>
                         <li><a  href="#contact">सम्पर्क</a></li>
                     </ul>

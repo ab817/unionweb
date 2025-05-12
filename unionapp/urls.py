@@ -11,5 +11,7 @@ urlpatterns = [
     path('event/<int:id>/', views.event_detail, name='event_detail'),
     path('gallery/<int:id>/', views.gallery_detail, name='gallery_detail'),
     path('organization/<int:id>/', views.org_detail, name='org_detail'),
+    path('plan/<int:id>/', views.plan_detail, name='plan_detail'),
     path('blog_list/', views.blog_list, name='blog_list'),
+    path('video_list', views.video_list, name='video_list'),
 ]
