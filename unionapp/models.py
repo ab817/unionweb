@@ -137,10 +137,10 @@ class VideoPost(models.Model):
 
 class IssuePlan(models.Model):
     ISSUE_TYPE_CHOICES = [
-        ('climate', 'Climate Change'),
-        ('immigration', 'Comprehensive Immigration Reform'),
-        ('economic', 'Economic Opportunity'),
-        ('health', 'Health Care'),
+        ('HR Related', 'HR Related'),
+        ('Operation Related', 'Operation Related'),
+        ('Credit Related', 'Credit Related'),
+        ('IT Related', 'IT Related'),
     ]
     
     title = models.CharField(max_length=255)
