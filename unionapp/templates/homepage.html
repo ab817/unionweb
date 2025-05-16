@@ -26,7 +26,6 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="message-box">
-                    <h4>हामी को हौं</h4>
                     <h2>{{ welcome_content.title }}</h2>
                     <blockquote class="lead">{{ welcome_content.slogan }}</blockquote>
                     {{ welcome_content.description|safe }}
@@ -69,13 +68,14 @@
     <img src="{% static 'uploads/parallax.jpg' %}" alt="" class="img-responsive">
 </div>
 
-<!-- Issues section would need its own model or can use BlogPost with a specific category -->
+<!--
+
 <div id="issues" data-scroll-index="2" class="section lb">
     <div class="container">
         <div class="section-title text-left">
             <h3>समस्या तथा योजनाहरु</h3>
             <p class="lead">बिशुद्ध पेशागत हकहितका लागि कर्मचारी एकता , पारदर्शी र गतिशिल ब्यवस्थापन आजकाे आवस्यकता।</p>
-        </div><!-- end title -->
+        </div>
 
         <div class="row">
             <div class="col-md-5">
@@ -86,8 +86,8 @@
                 </a>
                     <p>{{ featured_issue.description|safe|truncatewords:100 }}</p>
                 
-                </div><!-- end issue -->
-            </div><!-- end col -->
+                </div>
+            </div>
             
             <div class="col-md-7">
                 {% for issue in issues %}
@@ -99,13 +99,13 @@
                     <h4>{{ issue.get_issue_type_display|upper }}</h4>
                     <p>{{ issue.description|safe|truncatewords:20 }}</p>
                 </a>
-                </div><!-- end issue -->
+                </div>
                 {% endfor %}
-            </div><!-- end col -->
-        </div><!-- end row -->
-    </div><!-- end container -->
-</div><!-- end section -->
-
+            </div>
+        </div>
+    </div>
+</div>
+-->
 <div id="event" data-scroll-index="3" class="section wb">
     <div class="container">
         <div class="section-title text-center">
@@ -119,21 +119,21 @@
                 <div class="participate-wrap">
                     <small>{{ event.get_category_display }}</small>
                     <figure>
-                        <img src="{{ event.image.url }}" alt="" class="img-responsive">
+                        <img src="#" alt="" class="img-responsive">
                         <figcaption><a href="{% url 'event_detail' event.id %}" class="global-radius"> <i class="flaticon-unlink"></i> </a></figcaption>
                     </figure>
                     <div class="event_dit">
                         <h4>{{ event.title }}</h4>
                         <ul>
                             <li><a href="{% url 'event_detail' event.id %}"><i class="fa fa-calendar"></i> {{ event.start_datetime|date:"d-m-Y" }}</a></li>
-                            <li><a href="{% url 'event_detail' event.id %}"><i class="fa fa-clock-o"></i> {{ event.start_datetime|time }} to {{ event.end_datetime|time }}</a></li>
+                            <li><a href="{% url 'event_detail' event.id %}"><i class="fa fa-clock-o"></i> {{ event.start_datetime }} to {{ event.end_datetime }}</a></li>
                             <li><a href="{% url 'event_detail' event.id %}"><i class="fa fa-map-marker"></i> {{ event.location }}</a></li>
                             
                         </ul>
                         <p>{{ event.description|safe|truncatewords:5 }}
                             
                         </p>             
-                        <a href="{% url 'event_detail' event.id %}" class="btn btn-light btn-radius btn-brd grd1">Details</Det></a>
+                        <!-- <a href="{% url 'event_detail' event.id %}" class="btn btn-light btn-radius btn-brd grd1">Details</Det></a>-->
                        
                     </div>
                 </div><!-- end participate -->
@@ -177,12 +177,13 @@
     </div>
 </div>
 
+<!--
 <div id="media" data-scroll-index="5" class="section wb">
     <div class="container">
         <div class="section-title text-center">
-            <h3>िडियो</h3>
+            <h3> भिडियो </h3>
             <p class="lead">हाम्रो नयाँ भिडियोहरू र अपडेटहरू हेर्नुहोस्।</p>
-        </div><!-- end title -->
+        </div>
 
         <div class="row">
             {% for video in video_posts %}
@@ -193,23 +194,24 @@
                         {% if video.video_link %}
                         <a href="{{ video.video_link }}" data-rel="prettyPhoto[gal]" class="playbutton"><i class="flaticon-play-button"></i></a>
                         {% endif %}
-                    </div><!-- end media -->
+                    </div>
                     <h4>{{ video.title }}</h4>
                     <p>{{ video.description|truncatewords:20 }}</p>
-                </div><!-- end issue -->
-            </div><!-- end col -->
+                </div>
+            </div>
             {% endfor %}
-        </div><!-- end row -->
-    </div><!-- end container -->
-</div><!-- end section -->
-
+        </div>
+    </div>
+</div>
+-->
+<!--
 <div id="blog" data-scroll-index="6" class="section lb">
     <div class="container">
         <div class="section-title text-center">
-            <span>Latest news</span>
-            <h3>From Blog</h3>
-            <p class="lead">Stay updated with our latest news and articles</p>
-        </div><!-- end title -->
+            <span>नयाँ समाचार तथा</span>
+            <h3>लेखहरू</h3>
+            <p class="lead">हाम्रा नयाँ समाचार र लेखहरूसँग सधैं अपडेट रहनुहोस्।</p>
+        </div>
         
         <div class="row">
             {% for post in blog_posts %}
@@ -240,5 +242,6 @@
         </div>
     </div>
 </div>
+-->
 
 {% endblock %}
