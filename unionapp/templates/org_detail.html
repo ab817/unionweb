@@ -4,17 +4,13 @@
 
 
 {% block bodysection %}
-<div class="container" style="margin-top: 100px; margin-bottom: 50px;">
-    <div class="section-title">
-        <h1>{{ org.title }}</h1>
-        <p class="lead">{{ org.slogan }}</p>
-    </div>
-
+<div class="container" style="margin-top: 115px; margin-bottom: 50px;">
     <!-- Main Content -->
     <div class="row">
-        <div class="col-md-8">
-            <!-- Featured Image -->
-            <div class="post-media wow fadeIn">
+        <div class="col-md-8">  
+            <h1><b>{{ org.title }}</b></h1>
+            <p class="lead mt-20">{{ org.slogan }}</p>
+            <div class="message-box" style="margin-top: 15px;">
                 <img src="{{ org.image.url }}" alt="" class="img-responsive img-rounded">
                 {% if org.video_link %}
                 <a href="{{ org.video_link }}" data-rel="prettyPhoto[gal]" class="playbutton"><i class="flaticon-play-button"></i></a>
@@ -22,8 +18,13 @@
             </div>
 
             <!-- Description -->
-            <div class="org-description mx-auto text-center">
+            <div class="message-box text-center" style="margin-top: 20px;">
                 {{ org.description|safe }}
+            </div>
+            <div class="text-center mt-4">
+                    <a href="{% url 'home' %}" class="btn btn-light btn-radius btn-brd grd1">
+                        <i class="fa fa-arrow-left"></i> Back to Home
+                    </a>
             </div>
         </div>
 
@@ -63,11 +64,7 @@
     </div>
 
     <!-- Back Button -->
-    <div class="text-center mt-4">
-        <a href="{% url 'home' %}" class="btn btn-light btn-radius btn-brd grd1">
-            <i class="fa fa-arrow-left"></i> Back to Home
-        </a>
-    </div>
+  
 </div>
 {% endblock %}
 
