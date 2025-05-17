@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
  
      <!-- Site Metas -->
-    <title>कृषि बिकास बैंक कर्मचारी संघ</title>
+    <title>कृषि बिकास बैंक कर्मचारी संघ नेपाल</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -69,12 +69,12 @@
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li><a  href="{% url 'home' %}" class="{% block home_active %}{% endblock %}">होमपेज</a></li>
-                        <li><a  href="#about">नेतृत्व</a></li>
-                        <li><a  href="#issues">इतिहास</a></li>
-                        <li><a  href="#event">नीति तथा कार्यक्रम</a></li>
+                       <!-- <li><a  href="#about">नेतृत्व</a></li>-->
+                        <li><a  href="#about">इतिहास</a></li>
+                        <li><a  href="#event">कार्यक्रम</a></li>
 						<li><a  href="#gallery">फोटोहरु</a></li>
-                        <li><a  href="{% url 'video_list' %}" class="{% block video_list %}{% endblock %}">भिडियो</a></li>
-                        <li><a  href="{% url 'blog_list' %}" class="{% block blog_active %}{% endblock %}">लेख</a></li>
+                        <!--<li><a  href="{% url 'video_list' %}" class="{% block video_list %}{% endblock %}">भिडियो</a></li>-->
+                        <!--<li><a  href="{% url 'blog_list' %}" class="{% block blog_active %}{% endblock %}">लेख</a></li>-->
                         <li><a  href="#contact">सम्पर्क</a></li>
                     </ul>
                 </div>
@@ -83,74 +83,88 @@
     </header>
     {% block bodysection %}{% endblock %}
     <div id="donate" data-scroll-index="7" class="section db">
-        <div class="container">
-            <div class="section-title text-center">
-                <h3>Contact Us</h3>
-                <p class="lead">Your support helps us continue our important work. Please fill out the form below.</p>
-            </div><!-- end title -->
-    
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="donate-form-wrapper">
-                        <form class="donate-form" method="post" action="{% url 'contact' %}">
-                            {% csrf_token %}
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" name="first_name" placeholder="First Name" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" name="last_name" placeholder="Last Name" required>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <input type="email" class="form-control" name="email_id" placeholder="Email Address" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <input type="tel" class="form-control" name="mobile_number" placeholder="Phone Number" required>
-                                    </div>
+    <div class="container">
+        <div class="section-title text-center">
+            <h3>सुझाव तथा सम्पर्क</h3>
+        </div><!-- end title -->
+
+        <style>
+            /* Custom CSS to increase the spacing between columns */
+            .custom-row-spacing > [class*="col-"] {
+                padding-right: 50px; /* Increase space on the right of the left column */
+                padding-left: 50px;  /* Increase space on the left of the right column */
+            }
+            @media (max-width: 767px) {
+                /* Adjust for smaller screens to avoid excessive padding */
+                .custom-row-spacing > [class*="col-"] {
+                    padding-right: 15px;
+                    padding-left: 15px;
+                }
+            }
+        </style>
+
+        <div class="row custom-row-spacing">
+            <div class="col-md-6">
+                <div class="donate-form-wrapper">
+                    <p class="lead">तपाईंको सुझावहरू स्वागत छ। कृपया तलको फारम भर्नुहोस्।</p>
+                    <form class="donate-form" method="post" action="{% url 'contact' %}">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="first_name" placeholder="First Name" required>
                                 </div>
                             </div>
-                            
-                            <div class="form-group">
-                                <input type="text" class="form-control" name="message_subject" placeholder="Message Subject" required>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="last_name" placeholder="Last Name" required>
+                                </div>
                             </div>
-                            
-                            <div class="form-group">
-                                <textarea class="form-control" name="feedback" rows="5" placeholder="Additional Message (Optional)"></textarea>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="email" class="form-control" name="email_id" placeholder="Email Address" required>
+                                </div>
                             </div>
-                            
-                            <div class="form-group text-center">
-                                <button type="submit" class="btn btn-light btn-radius btn-brd grd1">Submit</button>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="tel" class="form-control" name="mobile_number" placeholder="Phone Number" required>
+                                </div>
                             </div>
-                        </form>
-                    </div>
-                </div><!-- end col -->
-                
-                <div class="col-md-6">
-                    <div class="donate-info">
-                       <!-- <h4>Why Donate?</h4>
-                        <p>Your generous donation helps us continue our mission and make a difference in our community.</p>
-                        
-                        <h4>Other Ways to Donate</h4>
-                        <ul class="donate-list">
-                            <li><i class="fa fa-bank"></i> Bank Transfer: <strong>Account Name, Account Number, Bank Name</strong></li>
-                            <li><i class="fa fa-mobile"></i> Mobile Payment: <strong>9841XXXXXX (eSewa/Khalti)</strong></li>
-                            <li><i class="fa fa-envelope"></i> Check: <strong>Payable to Organization Name</strong></li>
-                        </ul> -->
-                    </div>
-                </div><!-- end col -->
-            </div><!-- end row -->
-        </div><!-- end container -->
-    </div><!-- end section -->
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" class="form-group">
+                            <input type="text" class="form-control" name="message_subject" placeholder="Message Subject" required>
+                        </div>
+
+                        <div class="form-group">
+                            <textarea class="form-control" name="feedback" rows="5" placeholder="Additional Message (Optional)"></textarea>
+                        </div>
+
+                        <div class="form-group text-center">
+                            <button type="submit" class="btn btn-light btn-radius btn-brd grd1">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div><!-- end col -->
+
+            <div class="col-md-6">
+                <div class="donate-info">
+                    <h3>सम्पर्क</h3>
+                    <ul class="contact-list">
+                        <li><strong>कृषि बिकास बैंक कर्मचारी संघ नेपाल</strong></li>
+                        <li><strong>ठेगाना: </strong> रामशाहपथ, काठमाडौं, नेपाल</li>
+                        <li><strong>सम्पर्क न.:</strong> ०१-५७२११५६</li>
+                        <li><strong>Email:</strong> adbea.central@adbl.gov.np</li>
+                    </ul>
+                </div>
+            </div><!-- end col -->
+        </div><!-- end row -->
+    </div><!-- end container -->
+</div><!-- end section -->
 
     <div class="copyrights">
         <div class="container">
@@ -158,10 +172,9 @@
                 <div class="footer-left">
                     <p class="footer-links">
                         <a href="{% url 'home' %}">होमपेज</a>
-                        <a href="#">नेतृत्व</a>
-                        <a href="#">इतिहास</a>
-                        <a href="#">नीति तथा कार्यक्रम</a>
-                        <a href="#">फोटोहरु</a>
+                        <a href="#about">इतिहास</a>
+                        <a href="#event">कार्यक्रम</a>
+                        <a href="#gallery">फोटोहरु</a>
                         <a href="#">सम्पर्क</a>
                     </p>
                     <p class="footer-company-name">All Rights Reserved. © 2025 <a href="#">कृषि बिकास बैंक कर्मचारी संघ, नेपाल</a> </p>
