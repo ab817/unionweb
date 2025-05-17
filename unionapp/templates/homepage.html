@@ -28,7 +28,11 @@
                 <div class="message-box">
                     <h>{{ welcome_content.title }}</h2>
                     <blockquote class="lead">{{ welcome_content.slogan }}</blockquote>
-                    <p>{{ welcome_content.description|truncatewords:100|safe }}</div></p>
+                    {% if description_word_count >= 100 %}
+                    {{ welcome_content.description|truncatewords:50|safe }}</p></div>
+                    {% else %}
+                        {{ welcome_content.description|safe }}
+                    {% endif %}
                     <a href="{% url 'org_detail' welcome_content.id %}" data-scroll class="btn btn-light btn-radius btn-brd grd1">Learn More</a>
                 </div>
             </div>
