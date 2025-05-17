@@ -21,14 +21,14 @@
 </div> <!-- /#theme-main-banner -->
 
 <!-- Welcome Section -->
-<div id="about" data-scroll-index="1" class="section wb">
+<div id="about" data-scroll-index="1" class="section lb">
     <div class="container">
         <div class="row">
             <div class="col-md-6">
                 <div class="message-box">
-                    <h2>{{ welcome_content.title }}</h2>
+                    <h>{{ welcome_content.title }}</h2>
                     <blockquote class="lead">{{ welcome_content.slogan }}</blockquote>
-                    {{ welcome_content.description|safe }}
+                    <p>{{ welcome_content.description|truncatewords:100|safe }}</div></p>
                     <a href="{% url 'org_detail' welcome_content.id %}" data-scroll class="btn btn-light btn-radius btn-brd grd1">Learn More</a>
                 </div>
             </div>
