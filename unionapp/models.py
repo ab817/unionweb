@@ -111,8 +111,6 @@ class GalleryPost(models.Model):
     CATEGORY_CHOICES = [
         ('meeting', 'Meeting'),
         ('event', 'Event'),
-        ('seminar', 'Seminar'),
-        ('traning', 'Traning'),
     ]
     title = models.CharField(max_length=255)
     tag = models.CharField(choices=CATEGORY_CHOICES, default='all', max_length=100)
