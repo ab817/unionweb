@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect,get_object_or_404
+from django.utils.html import strip_tags
 from django.contrib import messages
 from django.core.paginator import Paginator
 from .models import SliderImage, WelcomeContent,IssuePlan, LearningMaterial, GalleryPost, GalleryImage, BlogPost, Event, VideoPost, Contact
@@ -6,11 +7,15 @@ from .models import SliderImage, WelcomeContent,IssuePlan, LearningMaterial, Gal
 def home(request):
     # Get distinct gallery categories
     gallery_categories = GalleryPost.objects.values_list('tag', flat=True).distinct()
+    welcome_content= WelcomeContent.objects.filter(tag='primary').first()
+    description_text = strip_tags(welcome_content.description)
+    description_word_count = len(description_text.split())
     
     context = {
         'slider_images': SliderImage.objects.filter(is_active=True).order_by('position'),
-        'welcome_content': WelcomeContent.objects.filter(tag='primary').first(),
-        'secondary_welcome_contents': WelcomeContent.objects.filter(tag='secondary'),  # Changed to plural and queryset
+        'secondary_welcome_contents': WelcomeContent.objects.filter(tag='secondary'),
+        'welcome_content':welcome_content,
+        'description_word_count': description_word_count,   # Changed to plural and queryset
         'events': Event.objects.all().order_by('-start_datetime')[:3],
         'blog_posts': BlogPost.objects.filter(status='published').order_by('-date')[:3],
         'gallery_posts': GalleryPost.objects.all(),
