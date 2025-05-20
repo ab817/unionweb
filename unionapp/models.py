@@ -151,3 +151,13 @@ class IssuePlan(models.Model):
 
     def __str__(self):
         return self.title
+
+class PageVisit(models.Model):
+    ip_address = models.GenericIPAddressField()
+    user_agent = models.TextField()
+    url = models.URLField()  # New field to store the visited URL
+    visited_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        
+        return f"{self.ip_address} - {self.visited_at} - {self.url} - {self.user_agent}"
