@@ -73,8 +73,9 @@
                         <li><a  href="#about">इतिहास</a></li>
                         <li><a  href="#event">कार्यक्रम</a></li>
 						<li><a  href="#gallery">फोटोहरु</a></li>
+                        <li><a  href="{% url 'elibrary' %}" class="{% block library_active %}{% endblock %}">इ-लाइब्रेरी</a></li>
                         <!--<li><a  href="{% url 'video_list' %}" class="{% block video_list %}{% endblock %}">भिडियो</a></li>-->
-                        <!--<li><a  href="{% url 'blog_list' %}" class="{% block blog_active %}{% endblock %}">लेख</a></li>-->
+                        <!-- <li><a  href="{% url 'blog_list' %}" class="{% block blog_active %}{% endblock %}">लेख</a></li> -->
                         <li><a  href="#donate">सम्पर्क</a></li>
                     </ul>
                 </div>
@@ -174,6 +175,7 @@
                         <a href="#about">इतिहास</a>
                         <a href="#event">कार्यक्रम</a>
                         <a href="#gallery">फोटोहरु</a>
+                        <a href="{% url 'elibrary' %}">इ-लाइब्रेरी</a>
                         <a href="#">सम्पर्क</a>
                     </p>
                     <p class="footer-company-name">All Rights Reserved. © 2025 <a href="#">कृषि बिकास बैंक कर्मचारी संघ, नेपाल</a> </p>

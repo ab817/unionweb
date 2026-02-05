@@ -3,7 +3,7 @@ import csv
 from django.http import HttpResponse
 from .models import (
     SliderImage, Event, WelcomeContent, LearningMaterial,
-    BlogPost, GalleryPost, GalleryImage,VideoPost, Contact, IssuePlan,PageVisit
+    BlogPost, GalleryPost, GalleryImage,VideoPost, Contact, IssuePlan,PageVisit, ELibrary
 )
 
 
@@ -73,3 +73,7 @@ class PageVisitAdmin(admin.ModelAdmin):
 
     actions = [export_as_csv]
 admin.site.register(PageVisit, PageVisitAdmin)
+
+@admin.register(ELibrary)
+class ELibraryAdmin(admin.ModelAdmin):
+    list_display = get_all_fields(ELibrary)

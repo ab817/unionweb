@@ -161,3 +161,12 @@ class PageVisit(models.Model):
     def __str__(self):
         
         return f"{self.ip_address} - {self.visited_at} - {self.url} - {self.user_agent}"
+    
+# E-Library Model
+class ELibrary(models.Model):
+    title = models.CharField(max_length=255)
+    document_link = models.FileField(upload_to='elibrary_documents/')
+    uploaded_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.title

@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect,get_object_or_404
 from django.utils.html import strip_tags
 from django.contrib import messages
+from django.http import JsonResponse
 from django.core.paginator import Paginator
-from .models import SliderImage, WelcomeContent,IssuePlan, LearningMaterial, GalleryPost, GalleryImage, BlogPost, Event, VideoPost, Contact
+from .models import SliderImage, WelcomeContent,IssuePlan, LearningMaterial, GalleryPost, GalleryImage, BlogPost, Event, VideoPost, Contact,ELibrary
 
 def home(request):
     # Get distinct gallery categories
@@ -117,3 +118,37 @@ def contact(request):
         messages.success(request, 'Thank you for your donation! We will contact you soon.')
         return redirect('home')    
     return render(request, 'homepage.html')
+
+def elibrary(request):
+    query = request.GET.get('q', '')
+    queryset = ELibrary.objects.all().order_by('-uploaded_at')
+
+    if query:
+        queryset = queryset.filter(title__icontains=query)
+
+    paginator = Paginator(queryset, 15)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    return render(request, 'elibrary.html', {
+        'page_obj': page_obj,
+        'is_paginated': page_obj.has_other_pages(),
+        'query': query,
+    })
+
+def elibrary_live_search(request):
+    q = request.GET.get('q', '').strip()
+
+    results = ELibrary.objects.filter(
+        title__icontains=q
+    ).order_by('-uploaded_at')[:20]
+
+    data = [
+        {
+            'title': item.title,
+            'file_url': item.document_link.url if item.document_link else '',
+        }
+        for item in results
+    ]
+
+    return JsonResponse(data, safe=False)

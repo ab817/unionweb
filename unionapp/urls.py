@@ -15,4 +15,6 @@ urlpatterns = [
     path('plan/<int:id>/', views.plan_detail, name='plan_detail'),
     path('blog_list/', views.blog_list, name='blog_list'),
     path('video_list', views.video_list, name='video_list'),
+    path('elibrary/', views.elibrary, name='elibrary'),
+    path('elibrary/search/', views.elibrary_live_search, name='elibrary_live_search'),
 ]

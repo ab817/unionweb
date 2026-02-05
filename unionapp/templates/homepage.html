@@ -33,7 +33,7 @@
                     <p>{{ welcome_content.description|truncatewords:50|safe }}</p></div>
                     {% else %}
                     {{ welcome_content.description|safe }}
-                    {% endif %}
+                    {% endif %} 
                     <a href="{% url 'org_detail' welcome_content.id %}" data-scroll class="btn btn-light btn-radius btn-brd grd1">थप जानकरी लिनुहोस् !!</a>
                 </div>
             </div>
