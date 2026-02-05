@@ -165,7 +165,7 @@ class PageVisit(models.Model):
 # E-Library Model
 class ELibrary(models.Model):
     title = models.CharField(max_length=255)
-    document_link = models.FileField(upload_to='elibrary_documents/')
+    document_link = models.FileField(upload_to='elibrary_documents/',max_length=500)
     uploaded_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
