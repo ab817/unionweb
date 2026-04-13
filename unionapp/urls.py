@@ -17,4 +17,5 @@ urlpatterns = [
     path('video_list', views.video_list, name='video_list'),
     path('elibrary/', views.elibrary, name='elibrary'),
     path('elibrary/search/', views.elibrary_live_search, name='elibrary_live_search'),
+    path('new/', views.new_page, name='new_page'),
 ]

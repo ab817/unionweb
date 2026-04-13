@@ -152,3 +152,6 @@ def elibrary_live_search(request):
     ]
 
     return JsonResponse(data, safe=False)
+
+def new_page(request):
+    return render(request, 'new.html')
